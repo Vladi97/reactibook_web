@@ -1,22 +1,19 @@
 import React from "react";
+import { FaSignOutAlt } from "react-icons/fa";
 import { Navbar } from "react-bootstrap";
-import { useAuth } from "../contexts/AuthContext";
 
-export default function Header() {
-  const { currentUser } = useAuth();
+export default function Home() {
   return (
-    <Navbar bg="primary" variant="dark">
-      <Navbar.Brand>Reactibook</Navbar.Brand>
+    <Navbar style={{ backgroundColor: '#4dc497' }} variant="dark">
+      <Navbar.Brand><strong>Reactibook</strong></Navbar.Brand>
       <Navbar.Toggle />
-      {currentUser !== undefined ? (
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
-            Signed in as: <a href="#login">Mark Otto</a>
+            <a href="!#" className="icon-navbar white-text">
+              <FaSignOutAlt />
+            </a>
           </Navbar.Text>
         </Navbar.Collapse>
-      ) : (
-        ""
-      )}
     </Navbar>
   );
 }

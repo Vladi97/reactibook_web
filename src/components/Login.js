@@ -29,14 +29,14 @@ export default function Login() {
 
   return (
     <>
-      <Card>
+      <Card className="w-100">
         <Card.Body>
           <h2 className="text-center mb-4">Log In</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} value="vmatarrita88@gmail.com" required />
+              <Form.Control type="email" ref={emailRef} value="vmatarrita@hotmail.com" required />
             </Form.Group>
             <Form.Group id="password">
               <Form.Label>Password</Form.Label>

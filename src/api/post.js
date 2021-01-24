@@ -4,21 +4,27 @@ const head = {
   headers: { 'Content-Type': 'application/json' }
 };
 
-const getPosts = async () => {
-  return axios.get("http://localhost:3080/post", head).then((response) => {
+const getPosts = async (uid) => {
+  return axios.get(`http://localhost:3080/post/${uid}`, head).then((response) => {
     return response.data;
   });
 };
 
-const createPost = async (details, uid) => {
-  debugger
+const createPost = async (details, uid, email) => {
   let data = {
     details : details,
-    uid: uid
+    uid: uid,
+    email: email
   }
   return axios.post("http://localhost:3080/post", data, head).then((response) => {
     return response.data;
   });
 };
 
-export { getPosts, createPost };
+const deletePost = async (id) => {
+  return axios.delete(`http://localhost:3080/post/${id}`, head).then((response) => {
+    return response.data;
+  });
+};
+
+export { getPosts, createPost, deletePost };
