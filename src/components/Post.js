@@ -4,7 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import { getPosts, createPost, deletePost } from "../api/post";
 
-export default function Home() {
+export default function Post() {
   const detailsRef = useRef();
   const [error, setError] = useState("");
   const [posts, setPosts] = useState([]);
@@ -57,12 +57,7 @@ export default function Home() {
     <>
       <Card style={{ height: "30h" }}>
         <Card.Body>
-          {/* <h2 className="text-center mb-4">Profile</h2> */}
           {error && <Alert variant="danger">{error}</Alert>}
-          {/* <strong>Email:</strong> {currentUser.uid} */}
-          {/* <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
-            Update Profile
-          </Link> */}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="post">
               <Form.Control
