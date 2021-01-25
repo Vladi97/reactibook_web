@@ -40,7 +40,6 @@ export default function Login(props) {
               <Form.Control
                 type="email"
                 ref={emailRef}
-                value="vmatarrita88@gmail.com"
                 required
               />
             </Form.Group>
@@ -48,7 +47,6 @@ export default function Login(props) {
               <Form.Label>{content.password_input}</Form.Label>
               <Form.Control
                 type="password"
-                value="Vladi1010"
                 ref={passwordRef}
                 required
               />

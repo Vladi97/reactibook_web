@@ -4,15 +4,18 @@ const head = {
   headers: { "Content-Type": "application/json" },
 };
 
+const url = "https://reactibook-api-laboratoria.herokuapp.com/post/"
+
 const getPosts = async (uid) => {
   return axios
-    .get(`http://localhost:3080/post/${uid}`, head)
+    .get(url+uid, head)
     .then((response) => {
       return response.data;
     });
 };
 
 const createPost = async (details, uid, email, privacy, image) => {
+  
   let formData = new FormData();
   formData.append("postImage", image);
   formData.append("details", details);
@@ -21,7 +24,7 @@ const createPost = async (details, uid, email, privacy, image) => {
   formData.append("email", email);
   
   return axios
-    .post("http://localhost:3080/post", formData, head)
+    .post(url, formData, head)
     .then((response) => {
       return response.data;
     });
@@ -29,7 +32,7 @@ const createPost = async (details, uid, email, privacy, image) => {
 
 const deletePost = async (id) => {
   return axios
-    .delete(`http://localhost:3080/post/${id}`, head)
+    .delete(url+id, head)
     .then((response) => {
       return response.data;
     });
@@ -40,9 +43,8 @@ const updatePost = async (details, id) => {
   let data = {
     details: details,
   };
-  let url = `http://localhost:3080/post/${id}`;
   return axios
-    .patch(`http://localhost:3080/post/${id}`, data, head)
+    .patch(url+id, data, head)
     .then((response) => {
       return response.data;
     })

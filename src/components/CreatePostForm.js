@@ -25,6 +25,7 @@ export default function CreatePostForm(props) {
         file
       );
       detailsRef.current.value = "";
+      setFile(undefined)
     } catch (e) {
       setError("Failed to create post");
     }
