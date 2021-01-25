@@ -40,7 +40,7 @@ export default function Login(props) {
               <Form.Control
                 type="email"
                 ref={emailRef}
-                value="vmatarrita@hotmail.com"
+                value="vmatarrita88@gmail.com"
                 required
               />
             </Form.Group>

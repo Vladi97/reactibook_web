@@ -10,6 +10,8 @@ export default function HomePage() {
         create_post: {
           input_text: "What's going on?",
           button_text: "Publish",
+          filter_friends: "Friends",
+          filter_public: "Public"
         },
         posts: {
           delete_button: "Delete",
@@ -29,7 +31,9 @@ export default function HomePage() {
         },
         posts: {
           delete_button: "Eliminar",
-          edit_button: "Editar"
+          edit_button: "Editar",
+          filter_friends: "Amigos",
+          filter_public: "Público"
         }
       },
     },

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { getPosts, deletePost } from "../api/post";
 import { Link } from "react-router-dom";
 
 export default function Posts(props) {
   const [posts, setPosts] = useState([]);
+  const [privacy, setPrivacy] = useState("public");
   const { currentUser } = useAuth();
   const content = props.content;
   const uid = currentUser.uid;
@@ -31,43 +32,57 @@ export default function Posts(props) {
           style={{ color: "#4dc497" }}
         >
           <b>
-            <Link className="mr-2" style={{ color: "#4dc497" }}>
+            <Link
+              onClick={() => {
+                setPrivacy("public");
+              }}
+              className="mr-2"
+              style={{ color: "#4dc497" }}
+            >
               {content.filter_public}
             </Link>
             |
-            <Link className="ml-2" style={{ color: "#4dc497" }}>
+            <Link
+              onClick={() => {
+                setPrivacy("friend");
+              }}
+              className="ml-2"
+              style={{ color: "#4dc497" }}
+            >
               {content.filter_friends}
             </Link>
           </b>
         </div>
         {posts.post !== undefined
           ? posts.post.map((data, key) => {
-              return (
-                <Card key={key} className="mb-1">
-                  <Card.Body>
-                    <p>{data.details}</p>
-                    {data.email === currentUser.email ? (
-                      <div>
-                        <Link style={{ color: "#4dc497" }}>
-                          {content.edit_button}
-                        </Link>
-                        <Link
-                          id="delete"
-                          className="ml-2"
-                          onClick={() => {
-                            handleDeletePost(data._id);
-                          }}
-                          style={{ color: "#4dc497" }}
-                        >
-                          {content.delete_button}
-                        </Link>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                  </Card.Body>
-                </Card>
-              );
+              if (data.privacy === privacy && privacy==="friend"||privacy === "public") {
+                return (
+                  <Card key={key} className="mb-1">
+                    <Card.Body>
+                      <p>{data.details}</p>
+                      {data.email === currentUser.email ? (
+                        <div>
+                          <Link style={{ color: "#4dc497" }}>
+                            {content.edit_button}
+                          </Link>
+                          <Link
+                            id="delete"
+                            className="ml-2"
+                            onClick={() => {
+                              handleDeletePost(data._id);
+                            }}
+                            style={{ color: "#4dc497" }}
+                          >
+                            {content.delete_button}
+                          </Link>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                    </Card.Body>
+                  </Card>
+                );
+              }
             })
           : ""}
       </div>

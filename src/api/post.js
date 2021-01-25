@@ -10,11 +10,12 @@ const getPosts = async (uid) => {
   });
 };
 
-const createPost = async (details, uid, email) => {
+const createPost = async (details, uid, email, privacy) => {
   let data = {
     details : details,
     uid: uid,
-    email: email
+    email: email,
+    privacy: privacy
   }
   return axios.post("http://localhost:3080/post", data, head).then((response) => {
     return response.data;
