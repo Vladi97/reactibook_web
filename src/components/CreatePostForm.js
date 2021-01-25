@@ -2,29 +2,36 @@ import React, { useState, useRef } from "react";
 import { Form, Card, Button, Alert } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { createPost } from "../api/post";
+import { FaImage } from "react-icons/fa";
 
 export default function CreatePostForm(props) {
   const detailsRef = useRef();
   const typeRef = useRef();
+  const [file, setFile] = useState();
   const [error, setError] = useState("");
   const { currentUser } = useAuth();
   const content = props.content;
 
   async function handleSubmit(e) {
     e.preventDefault();
-    debugger
-    
+    debugger;
+
     try {
       await createPost(
         detailsRef.current.value,
         currentUser.uid,
         currentUser.email,
-        typeRef.current.value
+        typeRef.current.value,
+        file
       );
       detailsRef.current.value = "";
     } catch (e) {
       setError("Failed to create post");
     }
+  }
+
+  function handleFileUpload(e) {
+    setFile(e.target.files[0]);
   }
 
   return (
@@ -41,8 +48,31 @@ export default function CreatePostForm(props) {
                 ref={detailsRef}
                 style={{ minHeight: "120px" }}
               />
-              <div className="d-flex justify-content-end">
-                <Form.Control ref={typeRef} as="select" className="btn btn-primary mt-2 mr-2 col-xl-2" style={{backgroundColor: "#fff", color:"#4dc497", borderColor: "#4dc497"}}>
+              <div className="d-flex justify-content-end align-items-center">
+                <label className="mr-4 mt-3">
+                  <input
+                    type="file"
+                    accept="image/x-png,image/gif,image/jpeg"
+                    onChange={handleFileUpload}
+                    style={{
+                      backgroundColor: "#fff",
+                      color: "#4dc497",
+                      borderColor: "#fff",
+                      display: "none",
+                    }}
+                  />
+                  <FaImage fontSize={30} />
+                </label>
+                <Form.Control
+                  ref={typeRef}
+                  as="select"
+                  className="btn btn-primary mt-2 mr-2 col-xl-2"
+                  style={{
+                    backgroundColor: "#fff",
+                    color: "#4dc497",
+                    borderColor: "#4dc497",
+                  }}
+                >
                   <option value="public">{content.filter_public}</option>
                   <option value="friend">{content.filter_friends}</option>
                 </Form.Control>

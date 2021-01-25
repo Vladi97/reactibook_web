@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Card } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
-import { getPosts, deletePost } from "../api/post";
+import { getPosts } from "../api/post";
 import { Link } from "react-router-dom";
+import Post from "./Post";
 
 export default function Posts(props) {
   const [posts, setPosts] = useState([]);
@@ -17,11 +17,6 @@ export default function Posts(props) {
 
   async function fetchMyAPI() {
     setPosts(await getPosts(uid));
-  }
-
-  async function handleDeletePost(id) {
-    await deletePost(id);
-    await fetchMyAPI();
   }
 
   return (
@@ -55,32 +50,12 @@ export default function Posts(props) {
         </div>
         {posts.post !== undefined
           ? posts.post.map((data, key) => {
-              if (data.privacy === privacy && privacy==="friend"||privacy === "public") {
+              if (
+                (data.privacy === privacy && privacy === "friend") ||
+                privacy === "public"
+              ) {
                 return (
-                  <Card key={key} className="mb-1">
-                    <Card.Body>
-                      <p>{data.details}</p>
-                      {data.email === currentUser.email ? (
-                        <div>
-                          <Link style={{ color: "#4dc497" }}>
-                            {content.edit_button}
-                          </Link>
-                          <Link
-                            id="delete"
-                            className="ml-2"
-                            onClick={() => {
-                              handleDeletePost(data._id);
-                            }}
-                            style={{ color: "#4dc497" }}
-                          >
-                            {content.delete_button}
-                          </Link>
-                        </div>
-                      ) : (
-                        ""
-                      )}
-                    </Card.Body>
-                  </Card>
+                  <Post key={key} content={content} data={data} />
                 );
               }
             })
