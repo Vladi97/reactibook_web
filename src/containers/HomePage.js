@@ -16,6 +16,7 @@ export default function HomePage() {
         posts: {
           delete_button: "Delete",
           edit_button: "Edit",
+          save_button: "Save",
           filter_friends: "Friends",
           filter_public: "Public"
         }
@@ -32,8 +33,9 @@ export default function HomePage() {
         posts: {
           delete_button: "Eliminar",
           edit_button: "Editar",
+          save_button: "Guardar",
           filter_friends: "Amigos",
-          filter_public: "Público"
+          filter_public: "Público",
         }
       },
     },

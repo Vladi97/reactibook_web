@@ -13,7 +13,7 @@ export default function Posts(props) {
 
   useEffect(() => {
     fetchMyAPI();
-  }, []);
+  });
 
   async function fetchMyAPI() {
     setPosts(await getPosts(uid));

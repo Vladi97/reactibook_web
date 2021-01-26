@@ -14,7 +14,6 @@ export default function CreatePostForm(props) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    debugger;
 
     try {
       await createPost(
@@ -25,10 +24,10 @@ export default function CreatePostForm(props) {
         file
       );
       detailsRef.current.value = "";
-      setFile(undefined)
-    } catch (e) {
-      setError("Failed to create post");
+    } catch (error) {
+      setError(error);
     }
+    setFile(undefined)
   }
 
   function handleFileUpload(e) {
@@ -40,11 +39,12 @@ export default function CreatePostForm(props) {
       <Card style={{ height: "25vh", border: 0, borderBottom: 1 }}>
         <Card.Body>
           {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
+          <Form id="create-form" onSubmit={handleSubmit}>
             <Form.Group id="post">
               <Form.Control
                 placeholder={content.input_text}
                 as="textarea"
+                name="details"
                 required
                 ref={detailsRef}
                 style={{ minHeight: "120px" }}
@@ -52,6 +52,7 @@ export default function CreatePostForm(props) {
               <div className="d-flex justify-content-end align-items-center">
                 <label className="mr-4 mt-3">
                   <input
+                  name="postImage"
                     type="file"
                     accept="image/x-png,image/gif,image/jpeg"
                     onChange={handleFileUpload}
@@ -67,6 +68,7 @@ export default function CreatePostForm(props) {
                 <Form.Control
                   ref={typeRef}
                   as="select"
+                  name="postImage"
                   className="btn btn-primary mt-2 mr-2 col-xl-2"
                   style={{
                     backgroundColor: "#fff",

@@ -1,0 +1,67 @@
+{"English": {
+    "landing_page": {
+        "slogan": "Let's do the timeline",
+        "main_message":
+        "Share whatever you're thinking about, let's the world know what's in your mind",
+        "login": {
+            "form_title": "Login",
+            "email_input": "Email",
+            "password_input": "Password",
+            "login_button": "Login",
+            "forgot_password_link": "Forgot Password?",
+            "need_account": "Need an account?",
+            "sign_up": "Sign Up"
+      }
+    },
+    "forgot_password_component" :{
+        "title": "Reset Password",
+        "input_label": "Email",
+        "button_text": "Reset Password",
+        "need_account": "Need an account?",
+        "login_button": "Login",
+        "sign_up": "Sign Up"
+    },
+    "signup_password_component" :{
+        "title": "Sign Up",
+        "email_input": "Email",
+        "password_input": "Password",
+        "passwordconf_input": "Confirm Password",
+        "already_have_account": "Already have an account? ",
+        "login_link": "Login",
+        "button": "Signup"
+    }
+  },
+  "Spanish": {
+    "landing_page": {
+        "slogan": "Creemos una historia",
+        "main_message":
+        "Comparte lo que estás pensando, dejemos que el mundo sepa lo que está en tu mente",
+        "login": {
+            "form_title": "Inicio de sesión",
+            "email_input": "Correo",
+            "password_input": "Contraseña",
+            "login_button": "Iniciar sessión",
+            "forgot_password_link": "Olvidaste la contraseña?",
+            "need_account": "Necesitas una cuenta?",
+            "sign_up": "Registrate"
+      }
+    },
+    "forgot_password_component" :{
+        "title": "Resetear Contraseña",
+        "input_label": "Correo",
+        "button_text": "Resetear Contraseña",
+        "login_button": "Iniciar sessión",
+        "need_account": "Necesitas una cuenta?",
+        "sign_up": "Registrate"
+    },
+    "signup_password_component" :{
+        "title": "Registro",
+        "email_input": "Correo",
+        "password_input": "Contraseña",
+        "passwordconf_input": "Confirmar contraseña",
+        "already_have_account": "Ya tiene una cuenta?",
+        "login_link": "Inicia sesion",
+        "button": "Registrarse"
+    }
+  }
+}
