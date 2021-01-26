@@ -50,13 +50,8 @@ export default function Posts(props) {
         </div>
         {posts.post !== undefined
           ? posts.post.map((data, key) => {
-              if (
-                (data.privacy === privacy && privacy === "friend") ||
-                privacy === "public"
-              ) {
-                return (
-                  <Post key={key} content={content} data={data} />
-                );
+              if (data.privacy === privacy) {
+                return <Post key={key} content={content} data={data} />;
               }
             })
           : ""}

@@ -8,16 +8,7 @@ export default function Post(props) {
   const data = props.data;
   const [editable, setEditable] = useState(false);
   const content = props.content;
-  debugger
-  const { currentUser, getToken } = useAuth();
-
-  getTokenInfo()
-
-  async function getTokenInfo(){
-    debugger
-    let token = await getToken();
-    let i = 0
-  }
+  const { currentUser } = useAuth();
 
   async function handleDeletePost(id) {
     await deletePost(id);
